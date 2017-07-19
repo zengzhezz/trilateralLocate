@@ -6,26 +6,22 @@ package com.ibeacon.utils;
  * @version 1.0 2017年3月13日
  */
 public class Constants {
-	// 定义版本号
-	public static final String VERSION = "01";
-	// 定义接收到的数据包类型-->正常数据包
-	public static final String PACKAGE_NORMAL = "00";
-	// 定义接收到的数据包类型-->心跳数据包
-	public static final String PACKAGE_HEARTBEAT = "01";
-	// 定义接收到的数据包类型-->同步数据包
-	public static final String PACKAGE_SYCH = "02";
-	// 定义要发送的数据包类型：正常数据包
+
+	public static final String VERSION = "a0";
+	//定义数据包类型：正常数据包
 	public static final Integer DATA_NORMAL = 0;
-	// 定义要发送的数据包类型：心跳数据包
-	public static final Integer DATA_HEARTBEAT = 1;
-	// 定义要发送的数据包类型：同步数据包
-	public static final Integer DATA_SYCH = 2;
+	//定义数据包类型：同步数据包
+	public static final Integer DATA_SYCH = 1;
 	// 定义进出事件类型-->无事件
 	public static final Integer EVENT_NO = -1;
 	// 定义进出事件类型-->进入
 	public static final Integer EVENT_IN = 0;
 	// 定义进出事件类型-->离开
 	public static final Integer EVENT_OUT = 1;
+	// 定义图和实际距离的比值
+	public static double SCALE = 0.003;
+	// 定义图片长宽比
+	public static double IMAGE_RATIO = 0.367475;
 	// 定义数据发送的状态
 	public interface PushData {
 		// 未发送 0
@@ -41,4 +37,26 @@ public class Constants {
 		// 已发送 1
 		static int soTimeout = 5000;
 	}
+
+	// 定义标签的类型
+	public interface LabelType {
+		// 标签类型：人
+		static int TYPE_PERSON = 1;
+		// 标签类型：狗
+		static int TYPE_DOG = 2;
+		// 标签类型：车
+		static int TYPE_CAR = 3;
+		// 标签类型：非法人员
+		static int TYPE_ILLEAGE = 4;
+	}
+
+	// 定义是否需要发送更新信息到前端
+	public interface needSend {
+		// 需要发送
+		static int NEED = 0;
+		// 不需要
+		static int NO_NEED = 1;
+	}
+
+	public static final String CURRENTUSER = "User";
 }

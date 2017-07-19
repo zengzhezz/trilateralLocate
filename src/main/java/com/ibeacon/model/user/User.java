@@ -1,4 +1,4 @@
-package com.ibeacon.model.User;
+package com.ibeacon.model.user;
 
 import com.ibeacon.model.base.IdEntity;
 

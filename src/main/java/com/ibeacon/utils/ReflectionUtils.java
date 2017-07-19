@@ -159,7 +159,7 @@ public class ReflectionUtils {
 
 	/**
 	 * 通过反射, 获得Class定义中声明的父类的泛型参数的类型. 如无法找到, 返回Object.class. eg. public UserDao
-	 * extends HibernateDao<User>
+	 * extends HibernateDao<user>
 	 *
 	 * @param clazz
 	 *            The class to introspect
@@ -174,7 +174,7 @@ public class ReflectionUtils {
 	/**
 	 * 通过反射, 获得Class定义中声明的父类的泛型参数的类型. 如无法找到, 返回Object.class.
 	 *
-	 * 如public UserDao extends HibernateDao<User,Long>
+	 * 如public UserDao extends HibernateDao<user,Long>
 	 *
 	 * @param clazz
 	 *            clazz The class to introspect

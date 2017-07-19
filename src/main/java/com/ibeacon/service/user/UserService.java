@@ -1,8 +1,7 @@
-package com.ibeacon.service.person;
+package com.ibeacon.service.user;
 
-import com.ibeacon.model.User.User;
+import com.ibeacon.model.user.User;
 import com.ibeacon.service.base.AbstractService;
-import com.ibeacon.utils.SpringContextHolder;
 import org.springframework.stereotype.Service;
 
 /**

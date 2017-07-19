@@ -128,4 +128,14 @@ public class ConvertUtils {
 		return bu.toString();
 	}
 
+	/**
+	 * 将时间戳格式化
+	 * @param time
+	 * @return
+	 */
+	public static String formatTimestamp(String time){
+		String result = time.substring(0,4)+"-"+time.substring(4,6)+"-"+time.substring(6,8)+" "+time.substring(8,10)+":"+time.substring(10,12)+":"+time.substring(12,14)+"";
+		return result;
+	}
+
 }

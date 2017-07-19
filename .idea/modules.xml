@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/trilateralLocate.iml" filepath="$PROJECT_DIR$/.idea/modules/trilateralLocate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trilateralLocate_main.iml" filepath="$PROJECT_DIR$/.idea/modules/trilateralLocate_main.iml" group="webtemplate" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trilateralLocate_test.iml" filepath="$PROJECT_DIR$/.idea/modules/trilateralLocate_test.iml" group="webtemplate" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trilateralLocate_main.iml" filepath="$PROJECT_DIR$/.idea/modules/trilateralLocate_main.iml" group="trilateralLocate" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trilateralLocate_test.iml" filepath="$PROJECT_DIR$/.idea/modules/trilateralLocate_test.iml" group="trilateralLocate" />
     </modules>
   </component>
 </project>
