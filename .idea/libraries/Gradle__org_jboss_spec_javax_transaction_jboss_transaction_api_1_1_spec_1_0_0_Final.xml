@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jboss.spec.javax.transaction:jboss-transaction-api_1.1_spec:1.0.0.Final">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.spec.javax.transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/2ab6236535e085d86f37fd97ddfdd35c88c1a419/jboss-transaction-api_1.1_spec-1.0.0.Final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jboss.spec.javax.transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/9bbc5381224289a1cf67988c661a1dcdc165b9ff/jboss-transaction-api_1.1_spec-1.0.0.Final-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

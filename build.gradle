@@ -1,0 +1,88 @@
+group 'com.ibeacon'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+
+repositories {
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    maven { url "http://repo.spring.io/release" }
+}
+
+dependencies {
+
+    // spring版本定义
+    def springVersion = "4.1.0.RELEASE"
+    // hibernate版本定义
+    def hibernateVer = "4.1.4.Final"
+
+    // spring依赖
+    compile "org.springframework:spring-aop:$springVersion",
+            "org.springframework:spring-orm:$springVersion",
+            "org.springframework:spring-jdbc:$springVersion",
+            "org.springframework:spring-instrument-tomcat:$springVersion",
+            "org.springframework:spring-instrument:$springVersion",
+            "org.springframework:spring-framework-bom:$springVersion",
+            "org.springframework:spring-expression:$springVersion",
+            "org.springframework:spring-core:$springVersion",
+            "org.springframework:spring-context-support:$springVersion",
+            "org.springframework:spring-context:$springVersion",
+            "org.springframework:spring-beans:$springVersion",
+            "org.springframework:spring-aspects:$springVersion",
+            "org.springframework:spring-jms:$springVersion",
+            "org.springframework:spring-oxm:$springVersion",
+            "org.springframework:spring-test:$springVersion",
+            "org.springframework:spring-tx:$springVersion",
+            "org.springframework:spring-web:$springVersion",
+            "org.springframework:spring-webmvc-portlet:$springVersion",
+            "org.springframework:spring-webmvc:$springVersion"
+
+    compile("org.hibernate:hibernate-c3p0:$hibernateVer",
+            "org.hibernate:hibernate-core:$hibernateVer",
+            "org.hibernate:hibernate-entitymanager:$hibernateVer",
+            "org.hibernate:hibernate-ehcache:$hibernateVer",
+            "org.hibernate.common:hibernate-commons-annotations:4.0.5.Final")
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version: '1.0.1.Final'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
+
+    // 数据库连接部分
+    compile("mysql:mysql-connector-java:5.1.36")
+    compile("com.mchange:mchange-commons-java:0.2.3.4")
+
+    // commons包
+    compile("org.apache.commons:com.springsource.org.apache.commons.fileupload:1.2.1",
+            "commons-codec:commons-codec:1.6",
+            "commons-collections:commons-collections:3.2.1",
+            "commons-lang:commons-lang:2.6",
+            "commons-logging:commons-logging:1.2",
+            "commons-pool:commons-pool:1.5.5",
+            "org.apache.commons:commons-lang3:3.1")
+    compile("commons-beanutils:commons-beanutils:1.9.3")
+
+    compile("org.apache.taglibs:taglibs-standard-impl:1.2.1")
+
+    // jackson
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.7.4'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.4'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4'
+
+    // json相关
+    compile("org.json:json:20170516")
+
+    // log4j
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    compile group: 'com.google.guava', name: 'guava', version: '20.0'
+
+    // http
+    compile("org.apache.httpcomponents:httpclient:4.5.3")
+    compile("org.apache.httpcomponents:httpcore:4.4.6")
+    compile("net.sf.ezmorph:ezmorph:1.0.6")
+
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+
+    compile group: 'gov.nist.math', name: 'jama', version: '1.0.3'
+
+    compile("org.codehaus.jackson:jackson-core-asl:1.9.2","org.codehaus.jackson:jackson-mapper-asl:1.9.2")
+    compile("org.dom4j:com.springsource.org.dom4j:1.6.1")
+    compile group: 'junit', name: 'junit', version: '4.11'
+}

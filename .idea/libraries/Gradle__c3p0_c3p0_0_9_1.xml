@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: c3p0:c3p0:0.9.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/c3p0/c3p0/0.9.1/759f6c11f515ee799814c43e4a50281220014ca/c3p0-0.9.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/c3p0/c3p0/0.9.1/b6960b1f2fd72495274bf429cd5cfeb4f9176aa/c3p0-0.9.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

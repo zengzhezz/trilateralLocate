@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework:spring-webmvc-portlet:4.1.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc-portlet/4.1.0.RELEASE/fe712a540b0f6c0e66d6149f6601a63c3bb75e3e/spring-webmvc-portlet-4.1.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc-portlet/4.1.0.RELEASE/182f18e70a30c61477ba1bda1a48bee207d39065/spring-webmvc-portlet-4.1.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
