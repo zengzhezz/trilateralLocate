@@ -128,11 +128,7 @@ public abstract class TimeUtil {
 	 */
 	public static boolean compare(Date begin, Date end, int duration) {
 		int durationReal = computeTimeSecond(begin, end);
-		if (durationReal >= duration) {
-			return true;
-		} else {
-			return false;
-		}
+        return durationReal >= duration;
 	}
 
 	/**
@@ -149,11 +145,7 @@ public abstract class TimeUtil {
 	 */
 	public static boolean compare(long begin, long end, int duration) {
 		int durationReal = computeTime(begin, end);
-		if (durationReal >= duration) {
-			return true;
-		} else {
-			return false;
-		}
+        return durationReal >= duration;
 	}
 
 	public static String format(Date recTime, String pattern) {

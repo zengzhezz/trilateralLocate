@@ -25,37 +25,37 @@ public class Constants {
 	// 定义数据发送的状态
 	public interface PushData {
 		// 未发送 0
-		static int DATA_UNSENT = 0;
+        int DATA_UNSENT = 0;
 		// 已发送 1
-		static int DATA_SENT = 1;
+        int DATA_SENT = 1;
 	}
 
 	// 定义数据发送的状态
 	public interface PushTimeOut {
 		// 未发送 0
-		static int connectionTimeout = 2000;
+        int connectionTimeout = 2000;
 		// 已发送 1
-		static int soTimeout = 5000;
+        int soTimeout = 5000;
 	}
 
 	// 定义标签的类型
 	public interface LabelType {
 		// 标签类型：人
-		static int TYPE_PERSON = 1;
+        int TYPE_PERSON = 1;
 		// 标签类型：狗
-		static int TYPE_DOG = 2;
+        int TYPE_DOG = 2;
 		// 标签类型：车
-		static int TYPE_CAR = 3;
+        int TYPE_CAR = 3;
 		// 标签类型：非法人员
-		static int TYPE_ILLEAGE = 4;
+        int TYPE_ILLEAGE = 4;
 	}
 
 	// 定义是否需要发送更新信息到前端
 	public interface needSend {
 		// 需要发送
-		static int NEED = 0;
+        int NEED = 0;
 		// 不需要
-		static int NO_NEED = 1;
+        int NO_NEED = 1;
 	}
 
 	public static final String CURRENTUSER = "User";

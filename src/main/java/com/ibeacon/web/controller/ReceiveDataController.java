@@ -57,32 +57,35 @@ public class ReceiveDataController {
 
             // 数据确定为定位包
             if(data.substring(0,2).equals(Constants.VERSION)){
-                for(int i=2;i < data.length();){
-                    // 解析data
-                    int num = Integer.parseInt(data.substring(i,i+2),16);
-                    log.debug("标签数:"+num);
-                    i=i+2;
-                    String uuid1 = data.substring(i,i+4);
-                    i=i+4;
+                if(nodeService.checkNodeExist(mac)){
+                    for(int i=2;i < data.length();){
+                        // 解析data
+                        int num = Integer.parseInt(data.substring(i,i+2),16);
+                        log.debug("标签数:"+num);
+                        i=i+2;
+                        String uuid1 = data.substring(i,i+4);
+                        i=i+4;
 
-                    for(int j=0;j<num;j++){
-                        String uuid2 = data.substring(i,i+4);
-                        String rssi = data.substring(i+4,i+6);
-                        String rssilast = getrssilast(rssi);
-                        String type = getType(rssi);
-                        String uuid =uuid1+uuid2;
-                        log.debug("写入数据到ibeacon..."+uuid+","+rssi+","+type+","+lut);
-                        ibeaconService.saveIbeacon(uuid, mac, rssilast, type, ConvertUtils.formatTimestamp(lut));
-                        i=i+6;
-                        String uuidName = labelService.findUuidNameByUuid(uuid);
-                        //把日志信息传到前端,信息格式("command","uuid","rssi","type","time")
-                        Websocket.sendMessageToAll("flow,"+uuid+","+rssilast+","+type+","+ConvertUtils.formatTimestamp(lut)+","+mac);
-                        log.debug("写入数据到originalBeaconList...");
-                        StaticVariables.originalBeaconList.add(new OriginBeaconModel(uuid,uuidName,mac,rssilast,ConvertUtils.formatTimestamp(lut)));
+                        for(int j=0;j<num;j++){
+                            String uuid2 = data.substring(i,i+4);
+                            String rssi = data.substring(i+4,i+6);
+                            String rssilast = getrssilast(rssi);
+                            String type = getType(rssi);
+                            String uuid =uuid1+uuid2;
+                            log.debug("写入数据到ibeacon..."+uuid+","+rssi+","+type+","+lut);
+                            ibeaconService.saveIbeacon(uuid, mac, rssilast, type, ConvertUtils.formatTimestamp(lut));
+                            i=i+6;
+                            String uuidName = labelService.findUuidNameByUuid(uuid);
+                            //把日志信息传到前端,信息格式("command","uuid","rssi","type","time")
+                            Websocket.sendMessageToAll("flow,"+uuid+","+rssilast+","+type+","+ConvertUtils.formatTimestamp(lut)+","+mac);
+                            log.debug("写入数据到originalBeaconList...");
+                            StaticVariables.originalBeaconList.add(new OriginBeaconModel(uuid,uuidName,mac,rssilast,ConvertUtils.formatTimestamp(lut)));
+                        }
                     }
-
+                }else{
+                    log.debug("该mac未注册:" + mac);
+                    System.out.println("该mac未注册:"+mac);
                 }
-
             }else{
                 log.debug("数据格式错误:" + data);
             }
@@ -96,7 +99,6 @@ public class ReceiveDataController {
     }
 
     public String getType(String rssi){
-
         int type;
         type = Integer.parseInt(rssi.substring(0,1),16);
         if(type>=8){
@@ -104,6 +106,7 @@ public class ReceiveDataController {
         }
         return "运动";
     }
+
     public String getrssilast(String rssi){
         int type = Integer.parseInt(rssi.substring(0,1),16);
         String rssilast;

@@ -29,8 +29,8 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 public class HttpUtils {
-	public static void main(String[] args) throws ClientProtocolException,
-			IOException {
+	public static void main(String[] args) throws
+            IOException {
 
 		String cmd = "LORA:"
 				+ "404c4968060001e9"
@@ -116,8 +116,8 @@ public class HttpUtils {
 	}
 
 	public static String post(String url, Map<String, String> params,
-							  int timeout, int soTimeout) throws ClientProtocolException,
-			IOException {
+							  int timeout, int soTimeout) throws
+            IOException {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		String body = null;
 		try {
@@ -135,7 +135,7 @@ public class HttpUtils {
 	}
 
 	public static String post(String url, Map<String, String> params,
-							  int timeout) throws ClientProtocolException, IOException {
+							  int timeout) throws IOException {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		String body = null;
 		try {
@@ -150,8 +150,8 @@ public class HttpUtils {
 		return body;
 	}
 
-	public static String get(String url) throws ClientProtocolException,
-			IOException {
+	public static String get(String url) throws
+            IOException {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		String body = null;
 
@@ -164,7 +164,7 @@ public class HttpUtils {
 	}
 
 	public static String get(String url, int connectonTimeout, int soTimeout)
-			throws ClientProtocolException, IOException {
+			throws IOException {
 		DefaultHttpClient httpclient = new DefaultHttpClient();
 		String body = null;
 
@@ -182,7 +182,7 @@ public class HttpUtils {
 	}
 
 	private static String invoke(DefaultHttpClient httpclient,
-								 HttpUriRequest httpost) throws ClientProtocolException, IOException {
+								 HttpUriRequest httpost) throws IOException {
 		HttpResponse response = sendRequest(httpclient, httpost);
 		String body = paseResponse(response);
 
@@ -207,7 +207,7 @@ public class HttpUtils {
 	}
 
 	private static HttpResponse sendRequest(DefaultHttpClient httpclient,
-											HttpUriRequest httpost) throws ClientProtocolException, IOException {
+											HttpUriRequest httpost) throws IOException {
 		HttpResponse response = httpclient.execute(httpost);
 
 		return response;

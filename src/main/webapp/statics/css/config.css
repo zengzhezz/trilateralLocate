@@ -1,0 +1,215 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+#header {
+	height: 50px;
+	line-height: 50px;
+	background: #edf6fa;
+}
+#header div input[type="text"] {
+	border: 1px solid #d4d4d4;
+	padding: 6px 0 6px 4px;
+	box-sizing: border-box;
+}
+
+#header div {
+	float: left;
+	margin-left: 26px;
+}
+
+#header div input[type="button"] {
+	padding: 4px 16px;
+	border-radius: 4px;
+	background: #379b8c;
+	color: #fff;
+	cursor: pointer;
+	border: 0px;
+}
+
+#header div input[type="button"]:hover {
+	background: #268878;
+}
+
+.scene {
+  width: 100%;
+}
+
+img {
+  width: inherit;
+  user-select: none;
+}
+
+body{ overflow-x: hidden;} 
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+.config_msg {
+  margin-bottom: 10px;
+  border: 2px solid #777;
+  padding: 10px 15px;
+}
+
+.config_msg .input{
+  margin-right: 70px;
+}
+
+.config_msg button {
+  color:rgb(255, 255, 255);
+  font-size:17px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:35px;
+  padding-right:35px;
+  border-width:0px;
+  border-color:rgb(197, 229, 145);
+  border-style:solid;
+  border-radius:0px;
+  background-color:rgb(0, 133, 194);
+  margin-right: 40px;
+}
+
+.config_msg button:hover{
+  color:#ffffff;
+  background-color:#08528a;
+  border-color:#c5e591;
+}
+
+.config_person {
+  width: 100%;
+  border: 2px solid #333;
+}
+
+.config_person_msg {
+  background: #4abae3;
+  padding: 10px 15px;
+}
+
+.config_person_msg .input {
+  margin-right: 70px;
+}
+
+.config_person_msg button{
+  color:rgb(255, 255, 255);
+  font-size:20px;
+  padding-top:19px;
+  padding-bottom:19px;
+  padding-left:50px;
+  padding-right:50px;
+  border-width:0px;
+  border-color:rgb(197, 229, 145);
+  border-style:solid;
+  border-radius:0px;
+  background-color:rgb(0, 133, 194);
+  }
+.config_person_msg button:hover{
+  color:#ffffff;
+  background-color:#08528a;
+}
+
+.config_person select {
+	width: 50px;
+}
+
+.config_person button{
+	margin-left: 30px;
+}
+
+.config_person table{
+  width: 100%;
+  border-collapse:collapse;
+  border: 1px solid #000;
+}
+
+.config_person table td{
+  border-right: 1px dashed #000;
+  border-bottom: 1px solid #888;
+	height: 50px;
+	text-align: center;
+}
+
+.config_person table td button {
+  color:rgb(255, 255, 255);
+  font-size:12px;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:15px;
+  border-width:0px;
+  border-style:solid;
+  border-radius:6px;
+  background-color:rgb(72, 148, 28);
+}
+
+.config_person table td button:hover {
+  background-color:rgb(46, 112, 35);
+}
+
+.config_person table .first td{
+	background: #78dfa3;
+}
+
+.node {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  position: absolute;
+  background: #ff4510;
+  cursor: pointer;
+}
+
+.mylocationnode {
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  position: absolute;
+  background: blue;
+  cursor: pointer;
+}
+.node .popwindow {
+  width: 50px;
+  position: absolute;
+  top: 14px;
+  left: -17px;
+  font-size: .6em;
+  text-align: center;
+  color: #FFF;
+}
+
+.node .popbox {
+  background: rgb(221, 51, 90);
+  color: #FFF;
+  border-radius: 2px;
+}
+
+.node .popwindow p {
+  margin: 0px;
+  display: block;
+  padding: 5px;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 5px solid rgb(221, 51, 90);
+  margin: 0 auto;
+}
+
+#label_description {
+	margin-top: 10px;
+	height: 40px;
+	font-size: 1.3em;
+}
+
+#hint {
+	position: absolute;
+	left: 20px;
+	color: white;
+	padding: 2px;
+	display: none;
+	background: black;
+}

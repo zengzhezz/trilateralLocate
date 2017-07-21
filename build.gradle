@@ -36,6 +36,7 @@ dependencies {
             "org.springframework:spring-webmvc-portlet:$springVersion",
             "org.springframework:spring-webmvc:$springVersion"
 
+    // hibernate相关
     compile("org.hibernate:hibernate-c3p0:$hibernateVer",
             "org.hibernate:hibernate-core:$hibernateVer",
             "org.hibernate:hibernate-entitymanager:$hibernateVer",
@@ -58,8 +59,6 @@ dependencies {
             "org.apache.commons:commons-lang3:3.1")
     compile("commons-beanutils:commons-beanutils:1.9.3")
 
-    compile("org.apache.taglibs:taglibs-standard-impl:1.2.1")
-
     // jackson
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.7.4'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.4'
@@ -78,6 +77,7 @@ dependencies {
     compile("org.apache.httpcomponents:httpcore:4.4.6")
     compile("net.sf.ezmorph:ezmorph:1.0.6")
 
+    // servlet
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
 
     // jama
@@ -85,6 +85,14 @@ dependencies {
 
     // websocket
     compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+
+    // jsp
+    compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.1'
+
+    // jstl
+    compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'org.glassfish.web', name: 'jstl-impl', version: '1.2'
 
     compile("org.codehaus.jackson:jackson-core-asl:1.9.2","org.codehaus.jackson:jackson-mapper-asl:1.9.2")
     compile("org.dom4j:com.springsource.org.dom4j:1.6.1")

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+        <title>Untitled Document</title>
+        <script type="text/javascript" src="jquery-1.2.6.js"></script>
+        <script type="text/javascript" src="jquery.jslider.js"></script>
+		
+        <style type="text/css">
+			 .defaultbar {
+                margin-top: 10px;
+                height: 5px;
+                background-color: #FFFFE0;
+                border: 1px solid #A9C9E2;
+                position: relative;
+            } .defaultbar .jquery-completed {
+                height: 3px;
+                background-color: #7d9edb;
+                top: 1px;
+                left: 1px;
+                position: absolute;
+            } .defaultbar .jquery-jslider {
+                height: 15px;
+                background-color: #E6E6FA;
+                border: 1px solid #A5B6C8;
+                top: -6px;
+                display: block;
+                cursor: pointer;
+                position: absolute;
+            } .defaultbar .jquery-jslider-hover {
+                background-color: #000080;
+            }
+            
+            fieldset {
+                border: solid 1px #dedede;
+                padding: 0 10px;
+            }
+            
+            fieldset legend {
+                background-color: #FFF5FA;
+                border: 1px solid #F8B3D0;
+                padding: 5px 10px;
+            }
+        </style>
+        <script type="text/javascript">
+            $().ready(function(){
+                var maxFont = 30;
+                var mf = $('#myFont').css('font-size', 30);
+                $.fn.jSlider({
+                    renderTo: '#slidercontainer1',
+                    size: {
+                        barWidth: 400,
+                        sliderWidth: 5
+                    },
+                    onChanging: function(percentage, e){
+                        mf.css('font-size', maxFont * percentage);
+                        window.console && console.log('percentage: %s', percentage);
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <dl>
+                <div id="myFont">
+                    Hello, world!
+                </div>
+                <div id="slidercontainer1">
+                </div>
+            </dl>
+        </fieldset>
+    </body>
+	
+	
+	<!--可删除-->
+	<script src="http://www.jq22.com/js/jq.js"></script>
+	<!--ecd 可删除-->
+
+</html>

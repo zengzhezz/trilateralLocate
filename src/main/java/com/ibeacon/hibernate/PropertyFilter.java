@@ -36,7 +36,7 @@ public class PropertyFilter {
     public enum MatchType {
         EQ("=?"), LIKE("like ?"), LT("<?"), GT(">?"), LE("<=?"), GE(">=?"), ISNULL("is null"), ISNOTNULL("not null");
 
-        private MatchType(String sql) {
+        MatchType(String sql) {
             this.sql = sql;
         }
 
@@ -54,7 +54,7 @@ public class PropertyFilter {
 
         private Class<?> clazz;
 
-        private PropertyType(Class<?> clazz) {
+        PropertyType(Class<?> clazz) {
             this.clazz = clazz;
         }
 

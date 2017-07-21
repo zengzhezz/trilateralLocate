@@ -41,10 +41,7 @@ public class LabelService extends AbstractService {
      */
     public boolean checkLabelExist(String uuid){
         Label label = findLabelByUuid(uuid);
-        if(label==null){
-            return false;
-        }
-        return true;
+        return label != null;
     }
 
     /**

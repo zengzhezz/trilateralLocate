@@ -25,8 +25,6 @@ public class ManageController {
     @Autowired
     IbeaconService ibeaconService;
 
-
-
     @RequestMapping("ibeacon_manage")
     public String companyManage(HttpServletRequest request, Model model,
                                 @ModelAttribute("page") Page<Ibeacon> page) {
@@ -39,6 +37,5 @@ public class ManageController {
         System.out.println(page);
         return "show";
     }
-
 
 }

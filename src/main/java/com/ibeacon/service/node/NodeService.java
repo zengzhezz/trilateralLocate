@@ -103,11 +103,7 @@ public class NodeService extends AbstractService {
      */
     public boolean checkNodeExist(String mac){
         Node node = findNodeByMac(mac);
-        if(node!=null){
-            return true;
-        }else{
-            return false;
-        }
+        return node != null;
     }
 
     /**

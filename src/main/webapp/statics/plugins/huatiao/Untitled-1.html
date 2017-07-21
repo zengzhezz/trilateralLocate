@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery input滑动条制作房屋表单搜索条件滑动条</title>
+<meta name="description" content="jQuery房屋表单搜索条件功能，制作input滑动条效果，通过滑动条来获取设置input值进行房屋表单搜索条件检索功能。" />
+</head>
+<body>
+
+<form method="get" action="#">
+	<fieldset id="criteria">
+		<legend><span>公寓标准</span></legend>
+
+		<div class="question">
+			<label for="price">租金 ($):</label>
+			<input type="number" name="price" id="price" value="2000" min="0" max="5000" size="4" data-units="dollars" />
+		</div>
+		<div class="question">
+			<label for="bedrooms">卧室:</label>
+			<input type="number" name="bedrooms" id="bedrooms" value="2" min="0" max="10" size="2" data-units="bedrooms" />
+		</div>
+		<div class="question">
+			<label for="baths">浴室:</label>
+			<input type="number" name="baths" id="baths" value="2" min="0" max="10" size="2" data-units="baths" />
+		</div>
+	</fieldset>
+	
+	<fieldset id="amenities">
+		<legend><span>设施需求</span></legend>	
+		
+		<div class="question">
+			<label for="subway">地铁附近:</label>
+			<select name="subway" id="subway">
+				<option value="a">不重要</option>
+				<option value="b">比较重要</option>
+				<option value="c">很重要</option>
+				<option value="d">必须有</option>
+			</select>
+		</div>
+		
+		<div class="question">
+			<label for="water">环境:</label>
+			<select name="water" id="water">
+				<option value="a">不重要</option>
+				<option value="b">比较重要</option>
+				<option value="c">很重要</option>
+				<option value="d">必须有</option>
+			</select>
+		</div>
+		
+		<div class="question">
+			<label for="walking">路程:</label>
+			<select name="walking" id="walking">
+				<option value="a">不重要</option>
+				<option value="b">比较重要</option>
+				<option value="c">很重要</option>
+				<option value="d">必须有</option>
+			</select>
+		</div>
+	</fieldset>
+	<input type="submit" name="search" id="search" value="搜索公寓" />
+</form>
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
+<script type="text/javascript" src="js/jQuery.peSlider.js"></script>
+<script type="text/javascript">
+$(function(){
+		   
+	//创建输入滑杆
+	$('input#price').peSlider({range: 'min'});
+	$('input#bedrooms,input#baths').peSlider({range: 'min'});
+	
+	//创建选择滑块
+	$('select').attr('aria-hidden','true').after('<div class="slider-status" aria-hidden="true"></div>').peSlider({
+		slide:function(e,ui){
+			$(this).next().next().text($(this).find('a:eq(0)').attr('aria-valuetext'));
+		}
+	}).each(function(){
+		$(this).next().text($(this).prev().find('a:eq(0)').attr('aria-valuetext'));
+	});
+	
+	//添加选择的标签
+	$('<div class="sliders-labels" aria-hidden="true"><span class="label-first">'+ $('#subway option:first').text() +'</span><span class="label-last">'+ $('#subway option:last').text() +'</span></div>').insertAfter('#amenities legend');
+	
+});
+</script>
+
+</body>
+</html>

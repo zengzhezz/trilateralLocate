@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*响应式*/
+@media(min-width:480px) and (max-width:680px){ 	
+.attend_title5 label{line-height:26px;}	 
+.attend_title5 label input{width: 100%; margin-left: 0;}
+.attend_title5 label select{width:70%;margin-top: 10px;}
+.time{ display: none;}
+.tabson .tabson_list1,.tabson .tabson_list2{ height: auto;}
+
+}
+
+@media(min-width:420px) and (max-width:479px){ 
+.admin_login{width:50%;}
+.admin_login dt .login_logo{ font-size:1.5em;padding-right:0;}
+.admin_login dt h2 span{ font-size:0.9em;}
+#header{ height: auto;}
+#sidebar{top: 109px;}
+.attend_title5 label{line-height:26px;}	 
+.attend_title5 label input{width: 100%; margin-left: 0;}
+.attend_title5 label select{width:70%;margin-top: 10px;}
+.dropmenu{top: 110px;}
+.breadcrumb{margin-top: 110px;}
+.time{ display: none;}
+.tabson .tabson_list1{ height: auto;}
+.pwd_form  li input{width: auto;}
+.tabson .tabson_list1,.tabson .tabson_list2{ height: auto;}
+
+}
+
+@media(min-width:0) and (max-width:419px){	
+.admin_login{width:50%;}
+.admin_login dt .login_logo{ font-size:1.5em;padding-right:0;}
+.admin_login dt h2 span{ font-size:0.9em;}
+#header{ height: auto;}
+#sidebar{top: 120px;}
+.attend_title5 label{line-height:26px;}	 
+.attend_title5 label input{width: 100%; margin-left: 0;}
+.attend_title5 label select{width:70%;margin-top: 10px;}
+.dropmenu{top: 120px;}
+.breadcrumb{margin-top: 120px;}
+.time{ display: none;}
+.pwd_form  li input{width: auto;}
+.tabson .tabson_list1,.tabson .tabson_list2{ height: auto;}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

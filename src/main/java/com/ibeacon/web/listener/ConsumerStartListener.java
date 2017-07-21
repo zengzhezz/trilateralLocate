@@ -6,6 +6,7 @@ import com.ibeacon.model.image.ImageSize;
 import com.ibeacon.model.variables.StaticVariables;
 import com.ibeacon.service.image.ImageSizeService;
 import com.ibeacon.thread.TrilateralThread;
+import com.ibeacon.thread.WeightTrilateralThread;
 import com.ibeacon.utils.SpringContextHolder;
 
 import java.util.concurrent.ExecutorService;
@@ -31,7 +32,7 @@ public class ConsumerStartListener implements ServletContextListener {
             StaticVariables.real_height = Double.parseDouble(location.getHeight());
         }
         ExecutorService executor = Executors.newCachedThreadPool();
-        executor.execute(new TrilateralThread());
+        executor.execute(new WeightTrilateralThread());
     }
 
 }

@@ -213,7 +213,7 @@ public class HibernateRepository {
         String queryString = new StringBuilder().append("from ")
                 .append(entityClass.getName()).toString();
 
-        return this.<T> find(queryString);
+        return this.find(queryString);
     }
 
     /**

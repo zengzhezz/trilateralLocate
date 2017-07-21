@@ -3,6 +3,10 @@ package com.ibeacon.service.image;
 import com.ibeacon.model.image.ImageSize;
 import com.ibeacon.service.base.AbstractService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.awt.*;
+import java.util.List;
 
 /**
  * Created by zz on 2017/7/19.
@@ -25,7 +29,12 @@ public class ImageSizeService extends AbstractService{
      * @return
      */
     public ImageSize findImageSize(){
-        return (ImageSize) this.find("from ImageSize").get(0);
+        List<ImageSize> list = this.find("from ImageSize");
+        if(!CollectionUtils.isEmpty(list)){
+            return (ImageSize) this.find("from ImageSize").get(0);
+        }else{
+            return null;
+        }
     }
 
     /**

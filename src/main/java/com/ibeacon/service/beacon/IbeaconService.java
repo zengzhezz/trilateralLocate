@@ -25,7 +25,7 @@ public class IbeaconService extends AbstractService {
                             String type,String lastUpdateTime) {
         Ibeacon ibeacon = new Ibeacon();
         ibeacon.setUuid(uuid);
-        ibeacon.setMac(mac);;
+        ibeacon.setMac(mac);
         ibeacon.setRssi(rssi);
         ibeacon.setType(type);
         ibeacon.setLastUpdateTime(lastUpdateTime);

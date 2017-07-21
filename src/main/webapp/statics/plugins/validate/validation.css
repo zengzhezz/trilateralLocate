@@ -1,0 +1,53 @@
+input.error {
+	border: 1px solid red;
+}
+
+label.error {
+	background: url("./demo/images/unchecked.gif") no-repeat 0px 0px;
+	padding-left: 16px;
+	padding-bottom: 2px;
+	font-weight: bold;
+	color: #EA5200;
+}
+
+label.checked {
+	background: url("./demo/images/checked.gif") no-repeat 0px 0px;
+}
+
+input[type="latitude"] {
+	width: 300px;
+	height: 25px;
+	background: #fff;
+	font-family: "Î¢ÈíÑÅºÚ";
+	border: 1px solid #62BFC6;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+input[type="itude"] {
+	width: 300px;
+	height: 25px;
+	background: #fff;
+	font-family: "Î¢ÈíÑÅºÚ";
+	border: 1px solid #62BFC6;
+	padding-left: 10px;
+	box-sizing: border-box;
+	font-family:"Î¢ÈíÑÅºÚ";
+}
+input[type="upCh"] {
+	width: 300px;
+	height: 25px;
+	background: #fff;
+	font-family: "Î¢ÈíÑÅºÚ";
+	border: 1px solid #62BFC6;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+input[type="posInt"] {
+	width: 300px;
+	height: 25px;
+	background: #fff;
+	font-family: "Î¢ÈíÑÅºÚ";
+	border: 1px solid #62BFC6;
+	padding-left: 10px;
+	box-sizing: border-box;
+}

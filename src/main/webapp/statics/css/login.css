@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 公共样式--默认样式清除 */
+body{background: #65cea7 url(../images/login-bg.jpg) no-repeat fixed; background-size: cover;
+width: 100%;height: 100%;-ms-background-size: cover;}
+.admin_login{width: 300px;height:auto; margin:10% auto 0 auto;padding: 30px 60px;background: #fff;
+border-radius:5px;}
+.admin_login dt{text-align: center;/*text-shadow:0 0 1px #0e947a;*/margin-bottom:15px; color:#5a97b9; }
+.admin_login dt .login_logo{ font-size:40px; padding-right:20px;color:#83c3bb;}
+.admin_login dt h2 span{font-weight: normal;color:#5a97b9;}
+.admin_login dd{margin:8px 0;height:40px;line-height:40px;overflow: hidden;position:relative;}
+.admin_login dd .login_txtbx{font-size: 14px;padding:8px 5%;width:100%;text-indent:2.5em;
+background:#eaeaec;font-family: "Microsoft YaHei"; border-radius:5px;}
+.admin_login dd .login_chose{ border:0; outline-style: none; font-size: 14px;text-indent:2.5em;background:#eaeaec;
+padding:8px 10px 8px 10%;width:166px; color:#afa9a9;border-radius: 5px;}
+.admin_login dd .login_chose option{outline-style:none;}
+.admin_login dd input{ color:#afa9a9;}
+/*.admin_login dd .checkcode{background: #fff;width: 100%;}
+.admin_login dd .checkcode input{width: 190px;outline:none;}*/
+/*img{vertical-align:middle;cursor: pointer;}*/
+.admin_login dd.login_btn{height: 45px; margin-top: 10px;}
+.admin_login dd.login_btn a{ display:block;}
+.admin_login dd .submit_btn{width: 100%;height:45px;font-size: 16px;background:#6bc5a4;color:#f8f8f8; cursor: pointer; 
+font-family: "Microsoft YaHei";border-radius:6px;}
+.admin_login dd .submit_btn:hover{background:#518db2 ;}
+.admin_login dd p{color: #53c6b0; font-size: 12px;text-align: center;margin:5px 0;}
+.admin_login dd:before{ font-family: 'adminthemesregular'; position: absolute;top: 0; left: 10px; height: 40px; line-height: 40px;
+font-size: 20px;color:#83c3bb;}
+.admin_login dd.role_type:before{font-size:14px;}
+.admin_login dd.user_icon:before{content: 'u';}
+.admin_login dd.pwd_icon:before{content: 'p';}
+.admin_login dd.val_icon:before{content: '类型';}
+
+/*placehold属性样式*/
+/*::-webkit-input-placeholder {color: #fff;}
+:-moz-placeholder {/* Firefox 18-  color: #fff;}
+::-moz-placeholder{/* Firefox 19+ color: #fff;}
+:-ms-input-placeholder {color: #fff;}*/
+
