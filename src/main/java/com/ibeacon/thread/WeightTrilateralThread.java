@@ -143,7 +143,7 @@ public class WeightTrilateralThread extends Thread{
             // 得到三个LocationModel用于计算坐标
             List<LocationModel> lmlist = new ArrayList<LocationModel>();
             for(int j = 0; j<3; j++){
-                LocationModel lm = model.getLocationList().get(j);
+                LocationModel lm = model.getLocationList().get((int) c[i][j]);
                 lmlist.add(lm);
             }
             // 使用三个LocationModel计算坐标

@@ -113,4 +113,10 @@ public class CombineAlgorithm {
         return obj;
     }
 
+    public static void main(String[] args) throws Exception {
+        Integer[] a = {0,1,2,3};
+        CombineAlgorithm ca = new CombineAlgorithm(a, 3);
+        Object[][] c = ca.getResult();
+    }
+
 }

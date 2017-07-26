@@ -111,7 +111,7 @@ function addNodeByMsg(mac,name,nodeTop,nodeLeft){
     hint.setAttribute("id", "hint");
     node.onmousemove = function(){
     	var height = ((node.offsetTop - 50) / image_height * real_height).toFixed(1);
-    	var width = (node.offsetLeft / image_width * real_height).toFixed(1);
+    	var width = (node.offsetLeft / image_width * real_width).toFixed(1);
     	hint.innerHTML = width+","+height;
     	hint.style.display = "block";
     };
@@ -141,7 +141,8 @@ function saveNode(){
 	var jsonstr="[]";
     var jsonarray = eval('('+jsonstr+')');
 	var $nodes = $(".node");
-	for (var node of $nodes){
+	//noinspection JSAnnotator
+    for (var node of $nodes){
 		var arr = {
 			mac: $(node).attr("id"),
 			name: $(node).attr("name"),

@@ -70,6 +70,7 @@ dependencies {
     // log4j
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
+    // guava
     compile group: 'com.google.guava', name: 'guava', version: '20.0'
 
     // http
@@ -78,16 +79,19 @@ dependencies {
     compile("net.sf.ezmorph:ezmorph:1.0.6")
 
     // servlet
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    // compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
 
     // jama
     compile group: 'gov.nist.math', name: 'jama', version: '1.0.3'
 
     // websocket
-    compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    // compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
 
     // jsp
     compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.1'
+    // providedCompile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.1'
 
     // jstl
     compile group: 'org.apache.taglibs', name: 'taglibs-standard-impl', version: '1.2.5'

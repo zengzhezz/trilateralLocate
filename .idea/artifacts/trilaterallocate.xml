@@ -83,6 +83,7 @@
           <element id="dir-copy" path="$PROJECT_DIR$/src/main/resources" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="trilateralLocate_main/web/Web" />
     </root>
   </artifact>
 </component>
