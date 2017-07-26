@@ -5,7 +5,7 @@ package com.ibeacon.model.location;
  * @author zz
  * @version 1.0 2017年7月17日
  */
-public class LocationModel {
+public class LocationModel implements Comparable<LocationModel>{
 
     private String mac;
 
@@ -37,4 +37,16 @@ public class LocationModel {
         this.rssi = rssi;
     }
 
+    @Override
+    public int compareTo(LocationModel model) {
+        return this.getRssi() - model.getRssi();
+    }
+
+    @Override
+    public String toString() {
+        return "LocationModel{" +
+                "mac='" + mac + '\'' +
+                ", rssi=" + rssi +
+                '}';
+    }
 }

@@ -2,8 +2,8 @@ package com.ibeacon.web.websocket;
 
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
-
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
@@ -17,7 +17,7 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint("/websocket")
 public class Websocket {
 
-    private static Logger log = Logger.getLogger("Websocket");
+    private static Logger log = LogManager.getLogger("Websocket");
 
     // 静态变量，用来记录当前在线连接数。应该把它设计成线程安全的。
     private static int onlineCount = 0;

@@ -1,18 +1,5 @@
 package com.ibeacon.thread;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.util.CollectionUtils;
-
-import Jama.Matrix;
-
 import com.ibeacon.model.beacon.Node;
 import com.ibeacon.model.beacon.OriginBeaconModel;
 import com.ibeacon.model.beacon.WeightBeaconModel;
@@ -23,23 +10,25 @@ import com.ibeacon.service.label.LabelService;
 import com.ibeacon.service.location.TrilLocationService;
 import com.ibeacon.service.node.NodeService;
 import com.ibeacon.utils.Algorithm;
-import com.ibeacon.utils.CombineAlgorithm;
 import com.ibeacon.utils.Constants;
 import com.ibeacon.utils.SpringContextHolder;
 import com.ibeacon.web.websocket.Websocket;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.util.CollectionUtils;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
- * 该线程对应HandledMsgThread，使用加权三边定位算法得到定位信息
- * notice: 该线程与HandledMsgThread只能启动其一
- * @author zz
- * @version 1.0 2017年7月17日
+ * Created by zz on 2017/7/26.
+ * Algorithm created by yanzy.
+ * parallel with the other threads. only one of them can be started in one project...
  */
-public class WeightTrilateralThread extends Thread{
+public class YanzyAlgThread extends Thread{
 
-    private static Logger log = LogManager.getLogger("WeightTrilateralThread");
-
-    // 定义总权值
-    private double totalWeight = 0;
+    private static Logger log = LogManager.getLogger("YanzyAlgThread");
 
     // 记录当前时间
     private Date this_date;
@@ -60,7 +49,7 @@ public class WeightTrilateralThread extends Thread{
                         String uuidName = model.getUuidName();
                         String mac = model.getMac();
                         String rssi = model.getRssi();
-                        updateMsgToHandledList(uuid, uuidName, mac, rssi,Constants.needSend.NEED,
+                        updateMsgToHandledList(uuid, uuidName, mac, rssi, Constants.needSend.NEED,
                                 this_date.getTime());
                     }
                 }else{
@@ -123,55 +112,30 @@ public class WeightTrilateralThread extends Thread{
         if(numNodes<3){
             return null;
         }
-        // 得到组合数组
-        Integer[] group = new Integer[numNodes];
-        for(int i = 0; i < numNodes; i++){
-            group[i] = i;
-        }
-        // 求组合数
-        CombineAlgorithm ca = null;
-        try {
-            ca = new CombineAlgorithm(group,3);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            log.debug(e);
-        }
-        Object[][] c = ca.getResult();
-        double[] tempLocation = new double[2];
-        for(int i = 0; i<c.length; i++){
-            // 得到三个LocationModel用于计算坐标
-            List<LocationModel> lmlist = new ArrayList<LocationModel>();
-            for(int j = 0; j<3; j++){
-                LocationModel lm = model.getLocationList().get((int) c[i][j]);
-                lmlist.add(lm);
-            }
-            // 使用三个LocationModel计算坐标
-            double[] weightLocate = calculate(lmlist);
-            tempLocation[0]+=weightLocate[0];
-            tempLocation[1]+=weightLocate[1];
-        }
-        locate.setxAxis((tempLocation[0]/totalWeight)/StaticVariables.real_width);
-        locate.setyAxis((tempLocation[1]/totalWeight)/StaticVariables.real_height);
-        // 重置totalWeight
-        totalWeight = 0;
+        // 得到model中的所有Location的拷贝
+        List<LocationModel> lmList = new ArrayList<>();
+        lmList.addAll(model.getLocationList());
+        Collections.sort(lmList);
+        // TODO
+        System.out.println(lmList);
+        double[] tempLocation = calculate(lmList);
+        locate.setxAxis(tempLocation[0] / StaticVariables.real_width);
+        locate.setyAxis(tempLocation[1] / StaticVariables.real_height);
         return locate;
     }
 
     /**
-     * 求出通过该组基站距离加权后的坐标
-     *
-     * @param  bases 接收到的一组基站对象列表(此处列表中的基站应当是id各异的)
-     * @return  返回通过该组基站距离加权后的坐标
+     * 根据节点以及距离的信息，算出坐标
+     * @param lm
+     * @return
      */
     public double[] calculate(List<LocationModel> lm){
-		/*基站的mac与坐标, double[0]表示x, double[1]表示y*/
+        /*基站的mac与坐标, double[0]表示x, double[1]表示y*/
         final Map<String, double[]> basesLocation =new HashMap<String, double[]>();
-        double[] rawLocation;
-		/*距离数组*/
+        /*距离数组*/
         double[] distanceArray = new double[3];
         String[] macs = new String[3];
-        for(int i = 0; i < lm.size(); i++){
+        for(int i = 0; i < 3; i++){
             LocationModel model = lm.get(i);
             macs[i] = model.getMac();
             distanceArray[i] = Algorithm.calDistanceWithRssi(model.getRssi());
@@ -185,60 +149,28 @@ public class WeightTrilateralThread extends Thread{
             loc[1] = Double.valueOf(node.getNodeTop()) * StaticVariables.real_height;
             basesLocation.put(macs[i], loc);
         }
-        int disArrayLength = distanceArray.length;
-        double[][] a = new double[2][2];
-        double[][] b = new double[2][1];
-		/*数组a初始化*/
-        for(int i = 0; i < 2; i ++ ) {
-            a[i][0] = 2*(basesLocation.get(macs[i])[0]-basesLocation.get(macs[2])[0]);
-            a[i][1] = 2*(basesLocation.get(macs[i])[1]-basesLocation.get(macs[2])[1]);
+        double[] point1 = new double[2];
+        double[] point2 = new double[2];
+        // 计算出两个中间点
+        for(int i = 0; i < point1.length; i++){
+            point1[i] = basesLocation.get(macs[0])[i] + (basesLocation.get(macs[1])[i] -
+                    basesLocation.get(macs[0])[i]) * distanceArray[0] / (distanceArray[0] + distanceArray[1]);
         }
-		/*数组b初始化*/
-        for(int i = 0; i < 2; i ++ ) {
-            b[i][0] = Math.pow(basesLocation.get(macs[i])[0], 2)
-                    - Math.pow(basesLocation.get(macs[2])[0], 2)
-                    + Math.pow(basesLocation.get(macs[i])[1], 2)
-                    - Math.pow(basesLocation.get(macs[2])[1], 2)
-                    + Math.pow(distanceArray[disArrayLength-1], 2)
-                    - Math.pow(distanceArray[i],2);
+        for(int i = 0; i < point2.length; i++){
+            point2[i] = basesLocation.get(macs[0])[i] + (basesLocation.get(macs[2])[i] -
+                    basesLocation.get(macs[0])[i]) * distanceArray[0] / (distanceArray[0] + distanceArray[2]);
         }
-		/*将数组封装成矩阵*/
-        Matrix b1 = new Matrix(b);
-        Matrix a1 = new Matrix(a);
-		/*求矩阵的转置*/
-        Matrix a2  = a1.transpose();
-		/*求矩阵a1与矩阵a1转置矩阵a2的乘积*/
-        Matrix tmpMatrix1 = a2.times(a1);
-        Matrix reTmpMatrix1 = tmpMatrix1.inverse();
-        Matrix tmpMatrix2 = reTmpMatrix1.times(a2);
-		/*中间结果乘以最后的b1矩阵*/
-        Matrix resultMatrix = tmpMatrix2.times(b1);
-        double[][] resultArray = resultMatrix.getArray();
-        rawLocation = new double[2];
-		/*给未加权的结果数组赋值*/
-        for(int i = 0; i < 2; i++) {
-            rawLocation[i] = resultArray[i][0];
-        }
-		/*对应的权值*/
-        double weight = 0;
-        for(int i = 0; i<3; i++){
-            weight+=(1.0/distanceArray[i]);
-        }
-        totalWeight+=weight;
+        // 两个中间点取平均得到最终的坐标
         double[] resultloc = new double[2];
-		/*计算加权过后的坐标*/
-        for(int i = 0; i < 2; i++) {
-            resultloc[i] = rawLocation[i]*weight;
+        for (int i = 0; i < resultloc.length; i++) {
+            resultloc[i] = (point1[i] + point2[i]) / 2;
         }
         // 保存相关数据便于分析
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         DecimalFormat df = new DecimalFormat("0.0000");
         StringBuilder sb = new StringBuilder();
-        sb.append(format.format(this_date)+" ");
-        for(int i = 0; i < 3; i++){
-            sb.append(macs[i]+" "+distanceArray[i]+" ");
-        }
-        sb.append(df.format(resultloc[0])+" "+df.format(resultloc[1]));
+        sb.append(format.format(this_date)+"\t");
+        sb.append(df.format(resultloc[0])+"\t"+df.format(resultloc[1]));
         TrilLocationService trilLocationService = SpringContextHolder
                 .getBean(TrilLocationService.class);
         trilLocationService.saveTrilLocation(sb.toString());
@@ -254,8 +186,7 @@ public class WeightTrilateralThread extends Thread{
      * @param need
      * @param time
      */
-    private void updateMsgToHandledList(String uuid, String uuidName,
-                                        String mac, String rssi, int need, long time) {
+    private void updateMsgToHandledList(String uuid, String uuidName, String mac, String rssi, int need, long time) {
         // the flag where this uuid's message is already in handledList.
         boolean isExist = false;
         // check if handedList already has the uuid message. if no, add it ;
@@ -320,3 +251,5 @@ public class WeightTrilateralThread extends Thread{
     }
 
 }
+
+

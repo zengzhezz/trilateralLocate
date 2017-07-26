@@ -2,7 +2,8 @@ package com.ibeacon.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ import com.ibeacon.utils.HttpUtils;
 @RequestMapping("/api/")
 public class ReceiveDataController {
 
-    private static Logger log = Logger.getLogger("ReceiveDataController");
+    private static Logger log = LogManager.getLogger("ReceiveDataController");
 
     @Autowired
     private IbeaconService ibeaconService;
@@ -65,7 +66,6 @@ public class ReceiveDataController {
                         i=i+2;
                         String uuid1 = data.substring(i,i+4);
                         i=i+4;
-
                         for(int j=0;j<num;j++){
                             String uuid2 = data.substring(i,i+4);
                             String rssi = data.substring(i+4,i+6);

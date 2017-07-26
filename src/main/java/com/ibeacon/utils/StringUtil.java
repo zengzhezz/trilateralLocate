@@ -1,5 +1,8 @@
 package com.ibeacon.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,15 +17,13 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-
 /**
  * 字符串处理类
  */
 
 public class StringUtil {
 
-	private static final Logger logger = Logger.getLogger(StringUtil.class);
+	private static final Logger logger = LogManager.getLogger(StringUtil.class);
 
 	/**
 	 * 取指定小数位的浮点数,不够小数位数时补零

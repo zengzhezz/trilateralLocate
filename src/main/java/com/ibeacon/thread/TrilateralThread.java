@@ -12,7 +12,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 import Jama.Matrix;
@@ -38,7 +39,7 @@ import com.ibeacon.web.websocket.Websocket;
  */
 public class TrilateralThread extends Thread {
 
-    private static Logger log = Logger.getLogger("HandleMsgThread");
+    private static Logger log = LogManager.getLogger("HandleMsgThread");
 
     private List<NodeModel> nodeList = new ArrayList<TrilateralThread.NodeModel>();
 

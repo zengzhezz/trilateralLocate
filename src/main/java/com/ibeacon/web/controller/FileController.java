@@ -7,7 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +22,11 @@ import com.ibeacon.service.beacon.ShowBeaconService;
 import com.ibeacon.service.location.TrilLocationService;
 import com.ibeacon.utils.FileUtils;
 
-
-
-
 @Controller
 @RequestMapping("/file")
 public class FileController {
 
-    private static Logger log = Logger.getLogger("FileController");
+//    private static Logger log = LogManager.getLogger("FileController");
 
     @Autowired
     private ShowBeaconService showBeaconService;
@@ -85,8 +83,8 @@ public class FileController {
                     FileUtils.writeContent(uuid + "," + df.format(left) + "," + df.format(top)
                             + "," + l.getCreateTime() + "\r\n", path, uuid
                             + ".txt", true);
-                    log.debug(uuid + "," + df.format(left) + "," + df.format(top) + ","
-                            + l.getCreateTime() + "\r\n" + path + uuid + ".txt");
+//                    log.debug(uuid + "," + df.format(left) + "," + df.format(top) + ","
+//                            + l.getCreateTime() + "\r\n" + path + uuid + ".txt");
                 }
             }
         } catch (ParseException e) {

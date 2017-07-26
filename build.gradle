@@ -67,8 +67,9 @@ dependencies {
     // json相关
     compile("org.json:json:20170516")
 
-    // log4j
-    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    //  log4j.2
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
 
     // guava
     compile group: 'com.google.guava', name: 'guava', version: '20.0'
@@ -80,14 +81,14 @@ dependencies {
 
     // servlet
     // compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
 
     // jama
     compile group: 'gov.nist.math', name: 'jama', version: '1.0.3'
 
     // websocket
-    // compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
-    providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    // providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
 
     // jsp
     compile group: 'javax.servlet.jsp', name: 'jsp-api', version: '2.1'
