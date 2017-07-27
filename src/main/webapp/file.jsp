@@ -161,6 +161,9 @@
 <div id="search_trillocate">
     <div style="margin-left:10px;">导出一段时间的位置数据:</div>
     <div style="margin-left:10px;">
+        uuid: <input type="text" id="loc_uuid"/>
+    </div>
+    <div>
         始时间: <input type="text" id="loc_start"
                     onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',lang:'zh-cn'})" />
     </div>
@@ -190,7 +193,6 @@
             window.location.href = "nodeindex.jsp";
         });
         $("#run").click(function(){
-
 
             var start = $("#start").val();
             var end = $("#end").val();
@@ -224,10 +226,13 @@
         });
 
         $("#loc_run").click(function(){
-
-
+            var uuid = $("#loc_uuid").val();
             var start = $("#loc_start").val();
             var end = $("#loc_end").val();
+            if (uuid == null || uuid == '') {
+                alert("请选择uuid...");
+                return;
+            }
             if (start == null || start == '' || end == null || end == '') {
                 alert("请选择时间段");
                 return;
@@ -238,13 +243,14 @@
                 url :  "<%=path%>/file/gettrillocate",   // 发送请求地址
                 dataType : "json",
                 data : {// 发送给数据库的数据
+                    uuid: uuid,
                     start: start,
                     end: end
                 },
                 // 请求成功后的回调函数有两个参数
                 success : function(data, textStatus) {
                     if(data.code==0){
-                        window.location.href="download/file?filename=trillocate.txt";
+                        window.location.href="download/file?filename="+uuid+"_locate.txt";
                     }
                 }
             });

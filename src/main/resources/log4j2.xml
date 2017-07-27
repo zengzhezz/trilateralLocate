@@ -27,7 +27,7 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
             <DefaultRolloverStrategy max="7"/>
         </RollingFile>
-        <RollingFile name="HandleMsgThread" fileName="/tmp/logs/trilateralLocate/HandleMsgThread.log"
+        <RollingFile name="YanzyAlgThread" fileName="/tmp/logs/trilateralLocate/YanzyAlgThread.log"
                      filePattern="log/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
             <PatternLayout charset="UTF-8" pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n"/>
             <SizeBasedTriggeringPolicy size="50MB"/>
@@ -54,8 +54,8 @@
         <logger name="ReceiveDataController" level="trace">
             <appender-ref ref="ReceiveDataController"/>
         </logger>
-        <logger name="HandleMsgThread" level="trace">
-            <appender-ref ref="HandleMsgThread"/>
+        <logger name="YanzyAlgThread" level="trace">
+            <appender-ref ref="YanzyAlgThread"/>
         </logger>
         <logger name="Websocket" level="trace">
             <appender-ref ref="Websocket"/>

@@ -303,7 +303,7 @@ public class TrilateralThread extends Thread {
                         // 保存数据到TrilLocation
                         TrilLocationService trilLocationService = SpringContextHolder
                                 .getBean(TrilLocationService.class);
-                        trilLocationService.saveTrilLocation(sbmsg.toString());
+//                        trilLocationService.saveTrilLocation(sbmsg.toString());
                     } else {
                         // do nothing.
                     }
@@ -322,7 +322,7 @@ public class TrilateralThread extends Thread {
      * 三边定位算法得到坐标
      *
      * @param macs
-     * @param rssis
+     * @param values
      * @return 已经转换成坐标比例的left(index=0)值和top(index=1)值
      */
     public Double[] getLocation(String[] macs, Double[] values) {

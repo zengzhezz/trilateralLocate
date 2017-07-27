@@ -87,7 +87,7 @@ dependencies {
     compile group: 'gov.nist.math', name: 'jama', version: '1.0.3'
 
     // websocket
-    compile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
+    providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
     // providedCompile group: 'javax.websocket', name: 'javax.websocket-api', version: '1.1'
 
     // jsp

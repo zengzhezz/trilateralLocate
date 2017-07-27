@@ -83,6 +83,7 @@ public class YanzyAlgThread extends Thread{
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                log.error(e);
             }finally{
                 clear();
                 log.debug("end thread...");
@@ -117,8 +118,8 @@ public class YanzyAlgThread extends Thread{
         lmList.addAll(model.getLocationList());
         Collections.sort(lmList);
         // TODO
-        System.out.println(lmList);
-        double[] tempLocation = calculate(lmList);
+        log.debug(lmList);
+        double[] tempLocation = calculate(model.getUuid(), lmList);
         locate.setxAxis(tempLocation[0] / StaticVariables.real_width);
         locate.setyAxis(tempLocation[1] / StaticVariables.real_height);
         return locate;
@@ -129,7 +130,7 @@ public class YanzyAlgThread extends Thread{
      * @param lm
      * @return
      */
-    public double[] calculate(List<LocationModel> lm){
+    public double[] calculate(String uuid, List<LocationModel> lm){
         /*基站的mac与坐标, double[0]表示x, double[1]表示y*/
         final Map<String, double[]> basesLocation =new HashMap<String, double[]>();
         /*距离数组*/
@@ -173,7 +174,7 @@ public class YanzyAlgThread extends Thread{
         sb.append(df.format(resultloc[0])+"\t"+df.format(resultloc[1]));
         TrilLocationService trilLocationService = SpringContextHolder
                 .getBean(TrilLocationService.class);
-        trilLocationService.saveTrilLocation(sb.toString());
+        trilLocationService.saveTrilLocation(uuid, sb.toString());
         return resultloc;
     }
 

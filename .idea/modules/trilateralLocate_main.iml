@@ -94,7 +94,7 @@
     <orderEntry type="library" name="Gradle: org.apache.logging.log4j:log4j-api:2.7" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
-    <orderEntry type="library" name="Gradle: javax.websocket:javax.websocket-api:1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Gradle: javax.websocket:javax.websocket-api:1.1" level="project" />
     <orderEntry type="library" name="Gradle: gov.nist.math:jama:1.0.3" level="project" />
     <orderEntry type="library" name="Gradle: org.glassfish.web:jstl-impl:1.2" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet.jsp.jstl:jstl-api:1.2" level="project" />

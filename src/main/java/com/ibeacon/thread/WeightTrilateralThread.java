@@ -147,7 +147,7 @@ public class WeightTrilateralThread extends Thread{
                 lmlist.add(lm);
             }
             // 使用三个LocationModel计算坐标
-            double[] weightLocate = calculate(lmlist);
+            double[] weightLocate = calculate(model.getUuid(), lmlist);
             tempLocation[0]+=weightLocate[0];
             tempLocation[1]+=weightLocate[1];
         }
@@ -164,7 +164,7 @@ public class WeightTrilateralThread extends Thread{
      * @param  bases 接收到的一组基站对象列表(此处列表中的基站应当是id各异的)
      * @return  返回通过该组基站距离加权后的坐标
      */
-    public double[] calculate(List<LocationModel> lm){
+    public double[] calculate(String uuid, List<LocationModel> lm){
 		/*基站的mac与坐标, double[0]表示x, double[1]表示y*/
         final Map<String, double[]> basesLocation =new HashMap<String, double[]>();
         double[] rawLocation;
@@ -241,7 +241,7 @@ public class WeightTrilateralThread extends Thread{
         sb.append(df.format(resultloc[0])+" "+df.format(resultloc[1]));
         TrilLocationService trilLocationService = SpringContextHolder
                 .getBean(TrilLocationService.class);
-        trilLocationService.saveTrilLocation(sb.toString());
+        trilLocationService.saveTrilLocation(uuid, sb.toString());
         return resultloc;
     }
 

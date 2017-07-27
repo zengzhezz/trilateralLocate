@@ -54,9 +54,10 @@ public class FileController {
             throws ParseException {
         String startTime = request.getParameter("start");
         String endTime = request.getParameter("end");
+        String uuid = request.getParameter("uuid");
         String path = request.getSession().getServletContext().getRealPath("") + "/opt/";
         // 首先导出文件到服务器
-        ExpTrilLocate(startTime, endTime, path);
+        ExpTrilLocate(startTime, endTime, path, uuid);
         // 然后从服务器下载刚刚导出的文件
         return new MessageInfo(0,"success");
     }
@@ -99,14 +100,14 @@ public class FileController {
      * @param end
      * @param path
      */
-    public void ExpTrilLocate(String start, String end, String path) {
-        FileUtils.writeContent("", path,  "trillocate.txt", false);
+    public void ExpTrilLocate(String start, String end, String path, String uuid) {
+        FileUtils.writeContent("", path,  uuid + "_locate.txt", false);
         try {
-            List<TrilLocation> list = trilLocationService.findHistory(start, end);
+            List<TrilLocation> list = trilLocationService.findHistory(uuid, start, end);
             if(!CollectionUtils.isEmpty(list)){
                 for (TrilLocation locate : list) {
-                    String content = locate.getMessage();
-                    FileUtils.writeContent(content+"\r\n", path, "trillocate.txt" , true);
+                    String content = locate.getUuid() + " " + locate.getMessage();
+                    FileUtils.writeContent(content+"\r\n", path, uuid + "_locate.txt" , true);
                 }
             }
         } catch (ParseException e) {

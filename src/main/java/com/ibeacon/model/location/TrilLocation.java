@@ -17,8 +17,19 @@ public class TrilLocation extends IdEntity {
 
     private static final long serialVersionUID = 1L;
 
+    @Column(name="uuid")
+    private String uuid;
+
     @Column(name="msg")
     private String message;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getMessage() {
         return message;
